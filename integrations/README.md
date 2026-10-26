@@ -1,202 +1,253 @@
-X-Evil Network — Integration Governance
+X-Evil Network — Integration Governance Standard
 
-Document Type: Integration Governance Standard
-Version: 1.0.0
-Status: Proposed — Pending Formal Ratification
-Maintained By: X-Evil Network maintainers
-Network Authority: XEVIL009
+Document status: Proposed — pending formal ratification
+Document owner: X-Evil Network
+Purpose: Integration documentation, risk management, and lifecycle governance
 
 1. Purpose
 
-This document establishes a consistent framework for documenting, assessing, approving, operating, and retiring integrations within X-Evil Network.
+This document defines the proposed requirements for documenting, reviewing, securing, and maintaining integrations used by projects within X-Evil Network.
 
-An integration may connect network projects, third-party services, APIs, identity providers, data stores, automation systems, or deployment infrastructure.
+An integration may connect a project to an external API, identity provider, database, automation platform, cloud service, package registry, webhook, or another internal or external system.
 
-Every integration must have a defined purpose, accountable ownership, documented trust boundaries, and security controls appropriate to its risk.
+The objective is to make integration behavior, permissions, data flows, dependencies, and operational risks explicit and reviewable.
 
 2. Scope
 
-This standard applies to integrations that are developed, maintained, or formally operated by network projects, including:
+This standard applies to integrations involving:
 
-- Project-to-project communication.
 - External APIs and web services.
-- Authentication and authorization providers.
-- Data exchange and synchronization.
-- Build, test, deployment, and automation services.
-- Webhooks, event-driven systems, and scheduled jobs.
-- Storage, analytics, monitoring, and notification services.
+- Authentication and identity providers.
+- Databases, storage systems, and message services.
+- Webhooks and event-driven automation.
+- Third-party applications and plugins.
+- Cloud platforms and deployment services.
+- Package registries and build dependencies.
+- Internal cross-project interfaces.
+- Data exports, imports, and synchronization processes.
 
-A connection must not be considered approved solely because it is technically functional.
+Projects should apply additional controls where integrations process sensitive information, hold elevated permissions, or support critical operations.
 
-3. Integration Records
+3. Integration Record
 
-Each material integration should have a documented record containing the following fields, as applicable:
+Each material integration should have a documented record containing the following information.
 
-Field| Requirement
-Integration ID| Unique, stable identifier.
-Name| Clear integration name.
-Purpose| Business or technical reason for the connection.
-Source| System or project initiating the interaction.
-Destination| Receiving system or service.
-Owner| Accountable project or team.
-Maintainers| Authorized personnel or teams.
-Interface| API, webhook, event stream, file transfer, or other mechanism.
-Data flow| Data sent, received, stored, or transformed.
-Authentication| Authentication mechanism and credential-management approach.
-Authorization| Required permissions and scopes.
-Dependencies| Services, libraries, and versions involved.
-Trust boundaries| Systems and parties across which trust changes.
-Failure handling| Timeout, retry, error, and recovery behavior.
-Security review| Review status and supporting evidence.
-Lifecycle status| Proposed, under review, approved, active, deprecated, or retired.
-Rollback or removal| Procedure for disabling or safely removing the integration.
+Field| Description
+Integration name| A clear, stable name.
+Owning project| The project responsible for the integration.
+Maintainer| The person, team, or organization responsible for maintenance.
+Purpose| The business or technical reason for the integration.
+Provider| The external or internal system being connected.
+Endpoints| Relevant service endpoints or documented endpoint patterns; never include secret-bearing URLs.
+Data exchanged| The categories and purpose of transferred data.
+Authentication| The authentication method and required permission scopes.
+Secrets| The types of credentials required and their secure storage location, without disclosing values.
+Dependencies| Required services, packages, APIs, and version constraints.
+Failure behavior| Timeout, retry, rate-limit, and error-handling behavior.
+Security assessment| Relevant risks, controls, and review evidence.
+Lifecycle status| The current status and relevant approval record.
+Recovery| Revocation, rollback, replacement, and recovery instructions.
 
-Do not publish credentials, private keys, tokens, sensitive payloads, or confidential endpoint details in public records.
+Not every field applies to every integration. Non-applicable fields should be identified explicitly when needed to avoid ambiguity.
 
-4. Lifecycle
+4. Integration Lifecycle
 
-Integrations should follow a documented lifecycle.
+The proposed lifecycle is:
 
-1. Proposed: Purpose, owner, systems, and expected data flows are identified.
-2. Under Review: Compatibility, security, privacy, licensing, and operational risks are assessed.
-3. Approved: Required authorization and review evidence are recorded.
-4. Implemented: The integration is developed and tested against documented requirements.
-5. Validated: Authentication, authorization, failure handling, and relevant security controls are verified.
-6. Active: The integration is operating within its approved scope.
-7. Deprecated: Replacement or retirement is planned and communicated where appropriate.
-8. Retired: Access is revoked, credentials are rotated or invalidated as necessary, and records are updated.
+1. Proposed: Document the intended purpose, provider, data flows, and permissions.
+2. Under Review: Assess security, privacy, reliability, licensing, and operational risks.
+3. Approved: Record the required authorization under the applicable governance process.
+4. Implemented: Configure the integration and validate its expected behavior.
+5. Active: Monitor operation, maintain dependencies, and review access.
+6. Deprecated: Document replacement plans and migration requirements.
+7. Retired: Disable access, revoke credentials, remove obsolete configuration, and update records.
 
-Approval requirements must be established by the applicable ratified governance and project policies. This proposed document does not independently authorize production access.
+These stages are proposed guidance. Project-specific workflows may use additional statuses if they remain consistent with formally adopted requirements.
 
-5. Security Requirements
+An integration must not be represented as approved merely because it has been implemented or appears in the registry.
 
-5.1 Least Privilege
+5. Trust Boundaries
 
-Grant only the permissions required for the integration's documented purpose. Prefer narrowly scoped credentials and separate credentials for distinct environments.
+Every integration should identify the systems and trust boundaries it crosses.
 
-5.2 Credential Management
+Treat external services, inbound requests, webhook payloads, remote files, and third-party responses as untrusted until appropriately validated.
 
-- Store secrets in an approved secret manager or platform-provided secret store.
-- Never commit credentials to source control.
-- Do not expose secrets in logs, error messages, screenshots, or public documentation.
-- Define rotation and revocation procedures.
-- Revoke credentials when an integration is retired or access is no longer justified.
+Controls should include, where applicable:
 
-5.3 Authentication and Authorization
+- Strong authentication and explicit authorization.
+- Server-side validation of incoming data.
+- Strict endpoint and destination validation.
+- Protection against server-side request forgery.
+- Safe parsing and handling of remote content.
+- TLS for network communications.
+- Request size, timeout, and rate limits.
+- Restricted network and service permissions.
+- Verification of webhook signatures where supported.
+- Protection against replayed or duplicated events where relevant.
 
-Use established authentication mechanisms appropriate to the service. Validate authorization on the server side and avoid treating possession of an endpoint URL as authorization.
+Do not trust a request solely because it originated from an expected network, domain, or integration provider.
 
-5.4 Transport and Data Protection
+6. Authentication and Authorization
 
-Protect data in transit using appropriate secure transport. Apply access controls, retention limits, and encryption requirements where relevant to the data and threat model.
+Integrations should use the strongest practical authentication method supported by the provider and architecture.
 
-5.5 Input and Output Validation
+Projects should:
 
-Validate external inputs, webhook signatures where supported, response schemas, content types, and expected error conditions. Treat data from external systems as untrusted.
+- Request only the permissions required for the integration's purpose.
+- Prefer short-lived credentials or workload identity where supported.
+- Use separate credentials for distinct environments when appropriate.
+- Restrict credentials to the relevant project and service.
+- Rotate or revoke credentials when exposure is suspected.
+- Document authorization renewal and failure behavior.
+- Avoid embedding secrets in source code, URLs, logs, or public configuration.
+- Review and remove permissions when the integration is changed or retired.
 
-5.6 Dependency Security
+Credentials must be stored using an appropriate secret manager or platform-provided secret storage.
 
-Record significant dependencies and supported versions. Review dependency advisories and compatibility changes. Remove unnecessary dependencies and document material changes.
+7. Data Flows and Privacy
 
-5.7 Logging and Monitoring
+Each material integration should document:
 
-Log operational and security events where appropriate without recording secrets or unnecessary sensitive data. Define alerting and escalation requirements for integrations with material operational or security impact.
+- Data sent to the provider.
+- Data received from the provider.
+- The purpose of each transfer.
+- Whether personal or sensitive information is involved.
+- Retention and deletion expectations.
+- Applicable access controls.
+- Relevant subprocessors or onward transfers.
+- Failure and recovery behavior that may affect data integrity.
 
-6. Privacy and Data Handling
+Only the data required for the documented purpose should be transferred. Projects must consider applicable privacy and legal obligations before enabling data exchange.
 
-Before an integration processes personal or otherwise sensitive data, document:
+Public documentation must never include live personal records, credentials, or confidential payloads.
 
-- The categories of data exchanged.
-- The purpose and lawful basis, where applicable.
-- The systems and parties receiving the data.
-- Retention and deletion requirements.
-- Access restrictions and relevant jurisdictional obligations.
-- Any material data residency or cross-border transfer considerations.
+8. Reliability and Error Handling
 
-Collect and transfer only the data necessary for the documented purpose. Do not introduce a new data use without the appropriate review.
+Integration code should account for partial failures and provider limitations.
 
-7. Reliability and Failure Handling
-
-Integrations should define behavior for:
+Document and implement appropriate behavior for:
 
 - Connection failures and timeouts.
-- Rate limits and service unavailability.
+- Rate limits and quota exhaustion.
+- Authentication expiry or revocation.
 - Invalid, incomplete, or unexpected responses.
-- Retries, backoff, and duplicate-event handling.
-- Partial failures and data inconsistency.
-- Recovery, reconciliation, and rollback.
+- Duplicate or out-of-order events.
+- Provider outages and degraded service.
+- Retry limits and backoff strategies.
+- Data synchronization conflicts.
+- Recovery and reconciliation after failures.
 
-Retries must not create uncontrolled request loops or duplicate consequential operations. Use idempotency controls where appropriate.
+Retries must be designed to avoid duplicate side effects. Use idempotency controls where the provider or application supports them.
 
-8. Testing and Validation
+Errors should be logged sufficiently for diagnosis without exposing secrets or sensitive payloads.
 
-Testing should be proportionate to integration risk and may include:
+9. Third-Party and Supply-Chain Risk
 
-- Contract and schema validation.
+Before introducing a material integration, assess:
+
+- Provider legitimacy and maintenance status.
+- Required permissions and trust assumptions.
+- Data handling and privacy implications.
+- Dependency and licensing requirements.
+- Known security vulnerabilities.
+- Availability and service continuity risks.
+- Vendor lock-in and replacement options.
+- Changes to terms, APIs, or supported authentication methods.
+
+Monitor material changes after deployment. An integration that was previously acceptable may require reassessment when its permissions, provider, data flows, or operating conditions change.
+
+10. Testing and Validation
+
+Validation should be proportionate to integration risk and should cover relevant behavior.
+
+Examples include:
+
 - Authentication and authorization tests.
-- Negative and malformed-input tests.
-- Secret-leakage checks.
-- Dependency and vulnerability checks.
-- Timeout, retry, and recovery tests.
-- Privacy and data-handling verification.
-- Deployment and rollback validation.
+- Input validation and malformed-response handling.
+- Permission-scope verification.
+- Timeout, retry, and rate-limit tests.
+- Webhook signature and replay handling.
+- Data minimization and privacy checks.
+- Failure recovery and reconciliation.
+- Dependency and vulnerability scanning.
+- Compatibility checks against supported API versions.
 
-Production credentials and sensitive production data should not be used in tests unless specifically authorized and protected under the applicable policy.
+Use non-production environments and synthetic data where practical. Avoid tests that affect real users, production data, or third-party systems without appropriate authorization.
 
-9. Change Management
+11. Change Management
 
-Material changes to an integration must be reviewed and documented. Examples include:
+Changes to endpoints, permissions, credentials, data flows, providers, dependencies, or failure behavior should be reviewed before deployment.
 
-- New permissions or credentials.
-- New data categories or recipients.
-- Changes to public endpoints or API contracts.
-- Dependency or protocol changes.
-- Changes to trust boundaries.
-- Changes that materially affect availability, privacy, or security.
+The change record should identify:
 
-Changes should be tested before production deployment where feasible. Maintain a rollback or disablement procedure appropriate to the integration's risk.
+- What changed and why.
+- Potential security and operational impact.
+- Required configuration or migration changes.
+- Validation evidence.
+- Rollback or recovery steps.
+- Required approvals.
 
-10. Third-Party Risk
+Changes should follow the owning repository's branch protection, pull-request, and release procedures.
 
-Before connecting an external service, evaluate its relevance, security posture, access requirements, data handling, availability dependencies, licensing terms, and exit options.
+12. Monitoring and Incident Handling
 
-Document significant reliance on third-party services and identify the impact if a service is compromised, discontinued, or unavailable.
+Material integrations should have monitoring appropriate to their risk and criticality.
 
-11. Incident Response and Retirement
+Where applicable, monitor:
 
-For a suspected integration-related incident:
+- Authentication failures.
+- Unexpected permission or configuration changes.
+- Error rates and timeouts.
+- Quota exhaustion and unusual request patterns.
+- Data synchronization failures.
+- Provider outages.
+- Security-sensitive events.
 
-1. Follow the applicable incident-response process.
-2. Contain the issue and disable the integration if necessary and authorized.
-3. Revoke or rotate affected credentials.
-4. Preserve relevant evidence without exposing sensitive information.
-5. Assess affected systems and data.
-6. Remediate, validate recovery, and document the outcome through authorized channels.
+Suspected credential exposure or integration compromise should trigger appropriate containment, credential revocation or rotation, impact assessment, and incident handling.
 
-When retiring an integration, remove unnecessary access, invalidate credentials, update dependent systems, and retain only the records required by applicable retention policies.
+13. Decommissioning and Revocation
 
-12. Exceptions
+When an integration is retired or replaced, the owner should:
 
-Exceptions should be documented with their justification, scope, risk assessment, compensating controls, accountable owner, approver, and expiry or review date.
+1. Identify dependent services and projects.
+2. Plan necessary migration or shutdown activities.
+3. Disable obsolete endpoints, jobs, and webhooks.
+4. Revoke unused credentials and permissions.
+5. Remove obsolete secrets and configuration.
+6. Address retained data according to applicable requirements.
+7. Update dependency and integration records.
+8. Record the final status and any continuing obligations.
 
-Exceptions must not override higher-priority security or governance requirements. Approval must follow the applicable formally adopted authority structure.
+Removing integration code alone does not guarantee that external access or credentials have been revoked.
 
-13. Compliance and Review
+14. Exceptions and Risk Acceptance
 
-Integration owners should maintain accurate records and provide evidence of required reviews and validation when requested by authorized maintainers.
+Exceptions to adopted integration requirements should be documented and approved by the authority designated under the applicable governance process.
 
-Review this document when material changes occur to network architecture, integration risks, security requirements, or governance decisions.
+Each exception should identify the affected requirement, justification, risk assessment, compensating controls, approver, decision date, and review or expiration date.
 
-14. Related Documentation
+Exceptions must not be used to bypass legal obligations or conceal a material security risk.
 
-- "Network Documentation Index" (../docs/README.md)
-- "Network Overview" (../docs/NETWORK-OVERVIEW.md)
-- "Project Lifecycle" (../docs/PROJECT-LIFECYCLE.md)
-- "Security Standard" (../standards/SECURITY-STANDARD.md)
-- "Project Registry" (../projects/README.md)
-- "Release Documentation" (../releases/README.md)
+15. Review and Maintenance
+
+Integration records should be reviewed when:
+
+- Permissions or authentication methods change.
+- Providers or endpoints change.
+- New categories of data are exchanged.
+- Dependencies acquire significant vulnerabilities.
+- Ownership changes.
+- Security incidents occur.
+- Integrations are deprecated or retired.
+
+Records should remain consistent with actual implementation and should link to relevant project security and release documentation.
+
+16. Governance Status
+
+Ratification status: Proposed — pending formal approval.
+
+This document defines proposed integration-governance requirements. Publishing, editing, merging, or deploying it does not constitute formal ratification. Binding requirements must follow the applicable governance approval process.
 
 ---
 
-X-Evil Network — Integration Governance
-Explicit ownership. Least privilege. Traceable data flows. Controlled change.
+X-Evil Network — Explicit trust boundaries, controlled access, and accountable integrations.
