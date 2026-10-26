@@ -1,159 +1,231 @@
 X-Evil Network — Project Lifecycle Standard
 
-Document type: Project lifecycle and governance procedure
-Status: Proposed — pending formal approval where required
-Version: 1.0.0
-Applies to: Projects participating in X-Evil Network
+Document status: Proposed — pending formal ratification
+Document type: Project lifecycle and management standard
+Applies to: Projects registered within X-Evil Network, subject to adopted policies
 
 1. Purpose
 
-This document defines a consistent lifecycle for proposing, registering, developing, reviewing, releasing, maintaining, and retiring network projects.
+This document defines a consistent proposed lifecycle for registering, reviewing, developing, releasing, maintaining, and retiring projects within X-Evil Network.
 
-Its purpose is to establish traceable project status, clear ownership, risk-appropriate security controls, and predictable release practices.
+The lifecycle is intended to improve accountability, traceability, security, and project quality. It does not independently authorize a project or ratify governance policy.
 
-This document remains proposed until approved through the applicable governance process. It does not independently authorize a project or grant repository access.
+2. Lifecycle Principles
 
-2. Lifecycle Stages
+Every registered project should have:
 
-Projects should progress through the following stages.
+- A clearly identified owner and purpose.
+- A documented scope and intended audience.
+- An explicit lifecycle status.
+- Appropriate technical and security documentation.
+- Traceable changes and release records.
+- Defined maintenance responsibilities.
+- A documented process for deprecation and retirement.
 
-Stage| Description| Expected evidence
-1. Proposed| Project concept and intended scope are documented.| Proposal and initial risk assessment
-2. Under Review| Governance, feasibility, security, and licensing considerations are evaluated.| Review comments and recorded decision
-3. Approved for Development| Required approvals are recorded and development may begin.| Approval record and assigned owner
-4. In Development| Implementation, testing, documentation, and security controls are established.| Source code, tests, documentation, and issue tracking
-5. Release Candidate| A specific version is prepared for final validation.| Version identifier, validation results, and release notes
-6. Active| An approved release is available and maintained.| Release record, support expectations, and maintenance owner
-7. Maintenance| The project receives fixes, dependency updates, and security remediation.| Maintenance policy and tracked changes
-8. Deprecated| The project is scheduled for replacement or retirement.| Deprecation notice, migration guidance, and timeline where applicable
-9. Retired| Active development or support has ended.| Retirement record and final status
+Lifecycle decisions should be recorded in the relevant project documentation or registry.
 
-A project may be rejected, suspended, or placed on hold at any stage when justified by security, governance, feasibility, or compliance concerns.
+3. Lifecycle Stages
 
-3. Project Proposal Requirements
+Stage| Meaning| Expected evidence
+"Proposed"| The project idea has been recorded but not approved for development.| Proposal, purpose, owner, and initial scope.
+"Under Review"| The proposal is being assessed.| Review findings, risks, dependencies, and required changes.
+"Approved for Development"| The project has received the applicable development authorization.| Recorded approval and defined scope.
+"In Development"| Implementation is underway.| Source code, documentation, and relevant validation.
+"Release Candidate"| A proposed release is undergoing final validation.| Candidate revision, test results, and known-issue review.
+"Active"| The project is released and maintained.| Release record, ownership, support approach, and security process.
+"Maintenance"| The project primarily receives fixes, security updates, and necessary compatibility changes.| Maintenance scope and update records.
+"Deprecated"| The project is scheduled for replacement, discontinuation, or reduced support.| Deprecation notice, impact assessment, and transition guidance.
+"Retired"| The project is no longer actively maintained or offered as an active network project.| Retirement record, final status, and archival or shutdown details.
+
+These statuses are proposed. A project may use additional internal statuses if they are documented and do not conflict with formally adopted requirements.
+
+4. Stage 1 — Proposal
 
 A project proposal should include:
 
-- Project name and unique identifier.
-- Purpose, intended users, and scope.
-- Proposed owner and maintainers.
-- Source repository and implementation approach.
-- Dependencies and planned integrations.
-- Data handling, permissions, and security considerations.
-- Licensing approach and third-party rights considerations.
-- Testing, deployment, and maintenance plan.
-- Known limitations, risks, and external requirements.
+- Project name and unique identifier, if applicable.
+- Project owner or responsible team.
+- Purpose, scope, and intended users.
+- Proposed repository location.
+- Expected dependencies and external integrations.
+- Initial security, privacy, and operational considerations.
+- Proposed license, where applicable.
+- Initial maintenance and support expectations.
 
-Proposals should not include credentials, private keys, personal information without a valid need, or confidential third-party material.
+The registry should identify the project as "Proposed" until the required review and approval have occurred.
 
-4. Review and Approval
+Registration is not approval. A proposal must not be represented as authorized for development or production use without the appropriate decision record.
 
-Reviewers should assess the proposal against the applicable governance policies and standards.
+5. Stage 2 — Review
 
-The review should consider:
+Reviewers should assess the proposal against applicable network requirements.
 
-1. Alignment with the network's purpose and approved policies.
-2. Clear ownership and maintenance responsibility.
-3. Security risks, trust boundaries, and required permissions.
-4. Licensing and public-source requirements, where applicable.
-5. Dependency health and integration risks.
-6. Testing, documentation, and release readiness.
-7. Operational cost and long-term sustainability.
+Review considerations include:
 
-Approval decisions should be recorded with the decision date, decision status, responsible authority, relevant conditions, and links to supporting review records.
+- Alignment with the network's purpose and adopted governance.
+- Clarity of ownership and accountability.
+- Technical feasibility and maintainability.
+- Security and privacy risks.
+- Licensing and third-party dependency implications.
+- External service and integration requirements.
+- Deployment, monitoring, and recovery needs.
+- Documentation completeness.
 
-Approval for development does not automatically authorize a production release.
+Review findings should record unresolved risks, required changes, and the resulting decision.
 
-5. Development Requirements
+Approval must come from the authority designated by the applicable governance process.
 
-During development, project maintainers should:
+6. Stage 3 — Development Authorization
 
-- Use version control and purpose-specific branches.
-- Submit changes through pull requests.
-- Run applicable automated checks before merging.
-- Maintain tests and reproducible build instructions where practical.
-- Document configuration, dependencies, interfaces, and operational requirements.
-- Apply least privilege to credentials, workflows, and external services.
-- Address reported vulnerabilities according to their severity and exposure.
-- Keep project metadata and the network registry accurate.
+Before a project enters "Approved for Development", the required authorization should be documented.
 
-Secrets must be stored through appropriate secure mechanisms, not in source files, commit history, public issues, or documentation.
+The record should identify:
 
-6. Release Readiness
+- The approving authority.
+- The approved project scope.
+- Applicable standards and conditions.
+- Known restrictions or outstanding prerequisites.
+- The decision date and relevant reference.
 
-Before a production release, the project owner should confirm that:
+Development authorization does not automatically approve production deployment or a future release.
 
-- The release scope and version identifier are clear.
-- Required tests and validation checks pass.
-- Known release-blocking defects are resolved or formally accepted by the appropriate authority.
-- Security and dependency reviews are complete at the required level.
-- Documentation and installation or deployment instructions are current.
-- Licensing and distribution requirements have been addressed.
-- Release notes identify significant changes and known limitations.
-- Rollback, recovery, or remediation procedures are documented where appropriate.
-- The release approval is recorded.
+7. Stage 4 — Development
 
-The project owner retains final release authority within approved network policies and their granted permissions.
+During development, project owners should maintain:
 
-7. Release Records
+- Source code and technical documentation.
+- A reviewable change history.
+- Automated validation where appropriate.
+- Dependency and vulnerability monitoring.
+- Secure configuration and secret management.
+- Relevant test coverage and build instructions.
+- A record of material design decisions.
 
-Each production release should have a traceable record containing, where applicable:
+Changes should use the repository's approved contribution process. Credentials, private data, and secrets must not be committed to public source control.
 
-- Project identifier and release version.
+8. Stage 5 — Release Readiness
+
+Before a project enters "Release Candidate", the release owner should verify that the candidate is ready for final evaluation.
+
+The readiness review should cover:
+
+- Required builds and automated tests.
+- Security checks and unresolved vulnerabilities.
+- Dependency and license review.
+- Documentation and user-facing instructions.
+- Configuration and deployment requirements.
+- Known issues and compatibility risks.
+- Backup, rollback, or recovery procedures where applicable.
+- Required approvals and release evidence.
+
+Unresolved critical issues should block release until they are addressed or explicitly handled through an authorized exception process.
+
+9. Stage 6 — Release and Active Operation
+
+A production release should be traceable to an identifiable source revision and its validation evidence.
+
+The release record should include:
+
+- Version or release identifier.
 - Release date.
-- Source commit or immutable source reference.
+- Source tag or immutable revision.
 - Summary of changes.
-- Compatibility or migration notes.
-- Validation results.
-- Known issues and security advisories.
-- Approval reference.
-- Rollback or recovery guidance.
+- Build, test, and security results.
+- Known limitations.
+- Upgrade or migration guidance where needed.
+- Rollback or recovery instructions where applicable.
+- Required approval evidence.
 
-A release record must not claim that a security audit, certification, or test was completed unless supporting evidence exists.
+The project owner retains final release authority within applicable, approved network policies. This statement reflects the proposed governance direction and remains subject to formal ratification.
 
-8. Maintenance and Security Response
+10. Stage 7 — Maintenance
 
-Active projects should define how they receive bug reports, monitor dependencies, publish fixes, and communicate significant incidents.
+Active and maintenance-stage projects should have a documented approach for:
 
-Security issues should be handled through an appropriate private reporting channel when public disclosure could expose users or systems to additional risk.
+- Security updates and vulnerability remediation.
+- Dependency updates.
+- Bug fixes and compatibility changes.
+- Issue triage and user-impact assessment.
+- Release notes and change tracking.
+- Periodic review of ownership and supportability.
 
-Maintainers should assess impact, prioritize remediation according to risk, validate fixes, and document the outcome without unnecessarily exposing exploit details or sensitive data.
+Projects that can no longer meet applicable security or maintenance requirements should have their status reviewed.
 
-9. Deprecation and Retirement
+11. Stage 8 — Deprecation
 
-A project may be deprecated or retired when it is no longer maintained, has been superseded, is no longer viable, or presents risks that cannot reasonably be addressed.
+A deprecation decision should identify:
 
-The responsible owner should document:
+- The reason for deprecation.
+- The effective date or expected transition period.
+- The effect on existing users and integrations.
+- Available alternatives or successor projects.
+- Security and support implications.
+- Migration guidance and relevant deadlines.
 
-- The reason and effective date.
-- Whether security fixes and support will continue during a transition period.
-- Replacement projects or migration options, if available.
-- Data export or migration considerations.
-- Dependency and integration impacts.
-- The final repository and release status.
+Deprecation notices should be published through appropriate project documentation and other relevant communication channels.
 
-Where a vulnerability or urgent operational risk requires immediate action, protective measures may be taken before a normal deprecation timeline is completed.
+A deprecated project should not be presented as a recommended new deployment without a documented justification.
 
-10. Registry and Manifest Maintenance
+12. Stage 9 — Retirement
 
-Project lifecycle changes should be reflected in the network's project registry and other relevant records.
+Before retirement, the project owner should assess:
 
-Do not mark a project as approved, active, or released without supporting evidence. Proposed projects must remain distinguishable from approved or production projects.
+- Whether services or deployments must be shut down.
+- Whether dependent projects or integrations require migration.
+- Whether data needs to be exported, retained, or securely deleted.
+- Whether credentials, tokens, and other access grants must be revoked.
+- Whether repositories and releases should be archived.
+- Whether outstanding security issues require a final notice.
+- Whether documentation and registry entries need updating.
 
-Update "STRUCTURE-MANIFEST.json" whenever the repository structure changes, following the manifest's own maintenance rules.
+The retirement record should state the final status and any continuing obligations.
 
-11. Exceptions
+Retirement does not automatically mean that historical source code, release records, or required audit evidence should be deleted.
 
-Any exception to an approved mandatory requirement must be documented, risk-assessed, time-bounded where practical, and approved by the authority designated by the applicable policy.
+13. Exceptions and Risk Acceptance
 
-An exception must identify its scope, rationale, compensating controls, responsible owner, and review or expiry date.
+Exceptions to adopted lifecycle requirements should be documented and approved by the authority designated under the applicable governance process.
 
-12. Review and Status
+An exception record should include:
 
-This document is proposed and does not become ratified solely because it is merged into the repository.
+- The requirement being excepted.
+- Business or technical justification.
+- Risk assessment and potential impact.
+- Compensating controls.
+- Approval authority and decision date.
+- Expiration date or review trigger.
 
-Once formally approved, its status and approval reference should be updated. Revisions should be reviewed when network governance, security requirements, or project delivery practices materially change.
+No exception should override legal obligations or conceal a material security risk.
+
+14. Registry Maintenance
+
+The project registry should accurately reflect each project's:
+
+- Name and identifier.
+- Owner or responsible team.
+- Repository location.
+- Current lifecycle status.
+- License, where applicable.
+- Latest release or revision, where relevant.
+- Relevant documentation links.
+- Deprecation or retirement notice, when applicable.
+
+Registry changes should be reviewable and consistent with the project record.
+
+15. Compliance and Review
+
+Lifecycle compliance should be evaluated using documented evidence rather than status labels alone.
+
+Reviews may include source inspection, workflow results, release records, security findings, documentation checks, and approval records.
+
+This standard should be reviewed when governance requirements, security controls, or project delivery practices change.
+
+16. Governance Status
+
+Ratification status: Proposed — pending formal approval.
+
+This document describes a proposed operational standard. Publishing, editing, merging, or deploying it does not constitute formal ratification. Binding requirements must follow the applicable governance approval process.
 
 ---
 
-X-Evil Network — consistent project governance from proposal to retirement.
+X-Evil Network — Traceable project decisions from proposal through retirement.
