@@ -63,7 +63,14 @@
 "00-governance/policies/CONTRIBUTION-POLICY.md",
 "00-governance/policies/RELEASE-POLICY.md",
 "00-governance/policies/SECURITY-POLICY.md",
-"00-governance/records/POLICY-REGISTER.md"
+"00-governance/records/POLICY-REGISTER.md",
+"docs/README.md", 
+"docs/NETWORK-OVERVIEW.md",
+"docs/PROJECT-LIFECYCLE.md",
+"standards/SECURITY-STANDARD.md", 
+"projects/README.md", 
+"integrations/README.md",
+"releases/README.md"
 ],
 "rules": [
 "Every required file must exist and must not be empty.",
