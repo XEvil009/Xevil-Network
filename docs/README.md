@@ -1,47 +1,38 @@
 X-Evil Network Documentation
 
-Status: Active documentation index
-Scope: Network-wide documentation
-Governance: Subject to the applicable X-Evil Network governance policies
+Status: Documentation index
+Network: X-Evil Network
 
 Purpose
 
-This directory contains the documentation required to understand, operate, maintain, and evolve X-Evil Network.
+This directory contains the network overview, project lifecycle guidance, and supporting documentation for the X-Evil Network architecture.
 
-The documentation is intended to support consistent project governance, secure engineering, controlled releases, transparent decisions, and long-term maintainability.
+Core Documentation
 
-Documentation Index
+Document| Description
+"Network Overview" (NETWORK-OVERVIEW.md)| Network purpose, architecture, governance, and operating principles.
+"Project Lifecycle" (PROJECT-LIFECYCLE.md)| Proposed lifecycle stages and project management procedures.
 
-Document| Purpose
-"Network Overview" (NETWORK-OVERVIEW.md)| Mission, scope, operating model, and network boundaries
-"Project Lifecycle" (PROJECT-LIFECYCLE.md)| Project proposal, approval, development, release, and retirement
+Standards
 
-Related Network Standards
+- "Security Standard" (../standards/SECURITY-STANDARD.md) — Proposed security baseline and operational controls.
 
-- "standards/SECURITY-STANDARD.md" — minimum security expectations for network projects.
-- "projects/README.md" — project registration and metadata requirements.
-- "integrations/README.md" — integration documentation and approval expectations.
-- "releases/README.md" — release records, versioning, and change history.
+Project Management
 
-Documentation Principles
+- "Project Registry" (../projects/README.md) — Registry requirements, project metadata, and lifecycle status definitions.
+- "Integration Governance" (../integrations/README.md) — Integration documentation, security, data flows, and change management.
+- "Release Documentation" (../releases/README.md) — Release records, validation evidence, versioning, and rollback guidance.
 
-1. Accuracy: Documents must describe verified behavior and approved policy.
-2. Traceability: Significant changes should be traceable through issues, pull requests, and release records.
-3. Security: Never publish credentials, access tokens, private keys, or other secrets.
-4. Governance: Proposed policies must not be represented as ratified policies.
-5. Maintainability: Update affected documentation whenever architecture, workflows, or approved policies change.
-6. Public transparency: Public documentation must not disclose confidential information or expose sensitive operational details.
+Governance
 
-Change Control
+Governance documents marked proposed remain pending formal ratification. Publishing documentation does not constitute approval or ratification.
 
-Documentation changes should be submitted through a feature branch and pull request. Required automated checks must pass before merging.
+Network-level governance and cross-project decisions remain subject to the applicable formally adopted governance process.
 
-Network-wide governance changes remain subject to the applicable approval and ratification process.
+Maintenance
 
-Current Status
-
-This index establishes the documentation structure. Individual documents must accurately state their own maturity and approval status.
+Update documentation links when files move or are renamed. Review relevant documentation whenever repository structure, project lifecycle procedures, security requirements, or release processes change.
 
 ---
 
-Part of the X-Evil Network public documentation system.
+X-Evil Network — Documented, maintainable, and security-conscious network architecture.
