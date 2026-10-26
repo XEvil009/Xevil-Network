@@ -1,186 +1,256 @@
-X-Evil Network — Release Documentation Standard
+X-Evil Network — Release Management Standard
 
-Document Type: Release Management Standard
-Version: 1.0.0
-Status: Proposed — Pending Formal Ratification
-Maintained By: X-Evil Network maintainers
-Network Authority: XEVIL009
+Document status: Proposed — pending formal ratification
+Document owner: X-Evil Network
+Purpose: Release records, versioning, validation, and traceability
 
 1. Purpose
 
-This document defines a consistent framework for recording and managing releases of X-Evil Network projects.
+This document defines the proposed baseline for preparing, validating, documenting, publishing, and maintaining project releases within X-Evil Network.
 
-Release records provide traceability between source code, validation results, published artifacts, security considerations, and release decisions.
+Release records should make it possible to identify what was released, which source revision produced it, what validation was performed, what limitations remain, and which approvals were required.
 
-A successful build does not, by itself, establish that a release has been approved, published, or verified for production use.
+A successful build or deployment does not, by itself, establish that a release is secure, approved, or production-ready.
 
 2. Scope
 
-This standard applies to formal releases of network projects, including:
+This standard applies to relevant releases of:
 
 - Applications and services.
-- Websites and documentation.
-- Libraries, packages, and reusable components.
-- Infrastructure and automation changes.
-- APIs, integrations, and other versioned deliverables.
+- Libraries and packages.
+- Websites and static sites.
+- Infrastructure and deployment configurations.
+- Automation workflows and supporting tools.
+- Network documentation and standards where versioned releases are maintained.
 
-Projects without formal versioned releases should document deployments and material changes using an appropriate equivalent record.
+Projects should adapt the release process to their technology, risk profile, and distribution model while meeting applicable adopted requirements.
 
-3. Release Record Requirements
+3. Release Principles
 
-Each formal release should have a release record containing the following information, where applicable:
+Releases should follow these principles:
 
-Field| Description
-Project| Official project name and unique project ID, where assigned.
-Version| Release version or clearly identified release identifier.
-Release Date| Actual publication date in a consistent timezone.
-Source Reference| Immutable commit SHA or source tag tied to the released code.
-Release Channel| Stable, preview, beta, or another explicitly defined channel.
-Summary| Purpose and principal changes.
-Changelog| Added, changed, fixed, deprecated, or removed functionality.
-Validation| Relevant build, test, security, and deployment results.
-Dependencies| Material dependency updates and known advisories.
-Security Notes| Relevant security fixes, limitations, and disclosures.
-Compatibility| Supported platforms, versions, and migration considerations.
-Known Limitations| Unresolved defects, constraints, and operational caveats.
-Rollback| Recovery or rollback procedure, where applicable.
-Approval Evidence| Reference to the required release decision, where applicable.
-Published Artifacts| Links to actual artifacts, packages, or deployment locations.
-Support Status| Applicable maintenance and support expectations.
-
-Unknown or inapplicable information should be identified honestly. Do not fabricate test results, approval records, version numbers, publication dates, or artifact links.
+- Traceability: Every release identifies its source revision.
+- Reproducibility: Build inputs and instructions are recorded where practical.
+- Validation: Required checks complete before release authorization.
+- Security: Known vulnerabilities and supply-chain risks are assessed.
+- Transparency: Changes, limitations, and compatibility impacts are documented.
+- Accountability: Required approvals and release ownership are recorded.
+- Recoverability: Rollback or recovery guidance exists where applicable.
+- Integrity: Published artifacts and release references are protected from unauthorized modification.
 
 4. Versioning
 
-Projects should use Semantic Versioning (MAJOR.MINOR.PATCH) when it is appropriate for their release model.
+Projects should select and document a versioning scheme appropriate to their users and distribution model.
 
-- MAJOR: Incompatible changes to a published interface or contract.
-- MINOR: Backward-compatible functionality additions.
-- PATCH: Backward-compatible fixes.
+Where Semantic Versioning is appropriate, use the format:
 
-Pre-release identifiers may be used for release candidates or preview versions.
+"MAJOR.MINOR.PATCH"
 
-Projects that do not use Semantic Versioning must document their versioning convention and explain how releases are distinguished.
+- MAJOR: Introduces incompatible public API or behavior changes.
+- MINOR: Adds backward-compatible functionality.
+- PATCH: Provides backward-compatible fixes.
 
-A version number alone does not prove that an artifact corresponds to the claimed source revision.
+Pre-release identifiers may be used for candidate builds and testing. Projects using another versioning scheme should document its meaning and compatibility expectations.
+
+Version numbers must accurately represent the release. Do not reuse an existing release identifier for different source content.
 
 5. Release Readiness
 
-Before a release is approved for publication, the responsible project team should verify the applicable requirements:
+Before publishing a release, the release owner should confirm that applicable readiness requirements have been satisfied.
 
-1. The intended source revision is identified.
-2. Required code review and repository protection requirements are satisfied.
-3. Required automated checks have passed.
-4. Relevant tests and security validations have completed.
-5. Dependencies and known vulnerabilities have been reviewed.
-6. Secrets, credentials, and unintended private information are not included.
-7. Documentation and changelog entries are current.
-8. Licensing and third-party notices are handled appropriately.
-9. Migration, compatibility, and rollback requirements are documented.
-10. Required approval evidence is available.
-11. Release artifacts and publication destinations are identified.
-12. Known limitations are disclosed accurately.
+The review should cover:
 
-Requirements should be proportionate to the release's risk and impact. Mandatory controls established by applicable adopted policies must not be bypassed.
+- Scope and completeness of the change.
+- Required build and test results.
+- Code review and unresolved review comments.
+- Security analysis and known vulnerabilities.
+- Dependency and licensing implications.
+- Configuration and deployment requirements.
+- Documentation and release notes.
+- Compatibility and migration risks.
+- Known issues and limitations.
+- Rollback or recovery readiness where applicable.
+- Required project and network approvals.
 
-6. Build and Validation Evidence
+Unresolved critical issues should block release unless an explicitly authorized process permits a documented exception consistent with applicable obligations.
 
-Release records should identify the validation performed and its result. Relevant evidence may include:
+6. Validation Evidence
 
-- Automated build results.
+Release validation should be proportionate to project risk and should use relevant automated and manual checks.
+
+Evidence may include:
+
+- Successful production build.
 - Unit, integration, and end-to-end test results.
-- Static analysis and code-quality checks.
-- Dependency and vulnerability scanning.
-- Secret-scanning results.
+- Static analysis and code review.
+- Dependency and secret scanning.
+- Infrastructure or configuration validation.
+- Deployment smoke tests.
 - Artifact integrity checks.
-- Deployment verification and smoke tests.
+- Security assessment results.
+- Compatibility and migration tests.
+- Recovery or rollback verification.
 
-Link to authoritative workflow runs or reports where possible. Distinguish clearly between checks that passed, checks that failed, checks that were skipped, and checks that were not performed.
+Validation records should identify the relevant source revision and the result of each required check.
 
-Do not claim that a release is secure or vulnerability-free merely because automated checks passed.
+A passing check demonstrates only what that check actually tests. It does not guarantee the absence of defects or vulnerabilities.
 
-7. Source and Artifact Integrity
+7. Release Record
 
-Each release should be traceable to an immutable source revision. Use protected tags or equivalent release identifiers where supported.
+Each material release should have a release record containing the following information where applicable.
 
-Published artifacts should be linked to the corresponding release record. Where appropriate, record checksums, provenance, signatures, or attestations.
+Field| Description
+Project| Project name and canonical repository.
+Version| Release identifier.
+Release date| Date the release was published.
+Source revision| Immutable commit SHA or equivalent source reference.
+Tag| Release tag, where used.
+Summary| Purpose and principal changes.
+Change log| Features, fixes, removals, and other material changes.
+Validation| Relevant build, test, and security evidence.
+Dependencies| Important dependency changes and known risks.
+Compatibility| Supported environments and breaking changes.
+Limitations| Known issues and unresolved restrictions.
+Migration| Upgrade or migration instructions where necessary.
+Recovery| Rollback or recovery instructions where applicable.
+Approval| Required approval references and release-owner decision.
 
-Avoid replacing published artifacts without a documented reason and traceable record. If a release must be corrected or withdrawn, document the change and direct users to the replacement or mitigation.
+Omit fields that genuinely do not apply, but document material limitations rather than silently excluding important information.
 
-8. Security and Dependency Notes
+8. Release Notes
 
-Release notes should identify material security fixes and dependency changes without prematurely disclosing exploitable details.
+Release notes should be concise, accurate, and useful to the intended audience.
 
-Where a vulnerability requires coordinated disclosure, follow the authorized vulnerability-handling process.
+They should identify:
 
-Document known material security limitations and affected versions where disclosure is appropriate. Do not expose secrets, private infrastructure details, or sensitive incident evidence.
+- Added functionality.
+- Fixed defects.
+- Changed behavior.
+- Removed or deprecated features.
+- Security-related changes that may be disclosed safely.
+- Breaking changes and migration requirements.
+- Known issues and limitations.
+- Relevant compatibility changes.
 
-9. Publication and Approval
+Do not publish credentials, private vulnerability details, personal information, or confidential operational data in release notes.
 
-A release may be published only after the applicable project and network requirements have been satisfied.
+9. Source and Artifact Integrity
 
-Project owners retain release authority within formally approved network policies. Network-level governance, security, and cross-project requirements continue to apply.
+Release references should identify the exact source revision used.
 
-The release record should link to the relevant approval evidence when required. A successful workflow, merged pull request, or public repository entry must not be represented as release approval unless the applicable process explicitly establishes that relationship.
+Where practical:
 
-10. Deployment and Rollback
+- Use protected, traceable release tags.
+- Record immutable commit identifiers.
+- Preserve build logs and relevant validation evidence.
+- Verify artifact integrity using appropriate hashes or signatures.
+- Restrict publishing permissions.
+- Separate build permissions from deployment permissions where feasible.
+- Record the origin of downloaded binaries and third-party artifacts.
+- Avoid modifying published release artifacts without creating a new traceable release.
 
-For deployed services and websites, document the relevant deployment environment and verification results.
+A version tag alone is not sufficient evidence that the source or artifact has been reviewed or validated.
 
-Where rollback is supported, describe:
+10. Security and Dependency Review
 
-- The conditions that trigger rollback.
-- The procedure or automation used.
-- The responsible operator or team.
-- Any data migration or compatibility constraints.
-- The checks required to confirm recovery.
+Before release, assess known vulnerabilities and material dependency changes.
 
-If rollback is unsafe or unavailable, document the limitation and the alternative recovery strategy.
+The release owner should determine whether findings:
 
-11. Post-Release Maintenance
+- Must be remediated before publication.
+- Require a documented and authorized exception.
+- Affect deployment configuration or user guidance.
+- Require a security advisory or coordinated communication.
+- Change the project's supported environment or risk profile.
 
-After publication, maintainers should:
+Security disclosures must be handled in accordance with applicable reporting procedures. Do not expose exploit details unnecessarily while affected users remain at risk.
 
-- Verify that published links and artifacts are accessible.
-- Monitor material errors and security advisories.
-- Correct release documentation when verified inaccuracies are discovered.
-- Publish fixes or advisories when necessary.
-- Update support and lifecycle status as project conditions change.
+11. Approval and Publication
 
-Significant corrections should be recorded rather than silently changing the historical meaning of a release.
+Release approval should follow the applicable project and network governance requirements.
 
-12. Deprecation and Withdrawal
+The release record should identify the required approval authority and provide traceable evidence of the decision.
 
-When a release or project is deprecated or withdrawn, document the reason, affected versions, recommended migration path, and support implications where applicable.
+The project owner retains final release authority within applicable, approved network policies under the proposed governance direction. This provision remains subject to formal ratification.
 
-For security-related withdrawals, provide appropriate mitigation guidance while following authorized disclosure requirements.
+Publication should occur through the project's approved release and deployment process. Changes to protected production branches must follow the repository's configured branch protection requirements.
 
-Do not delete or rewrite historical records in a way that obscures material changes or removes necessary auditability.
+12. Deployment and Post-Release Verification
 
-13. Exceptions
+Where a release is deployed to a running service or website, post-deployment verification should confirm the expected result.
 
-Exceptions to release requirements must follow the applicable adopted governance process.
+Checks may include:
 
-Where permitted, document the justification, affected release, assessed risks, compensating controls, accountable approver, and expiry or review date.
+- Successful deployment workflow.
+- Availability of the intended entry point.
+- Smoke tests or health checks.
+- Expected configuration and version.
+- Monitoring for elevated error rates.
+- Confirmation that critical functionality operates as intended.
 
-This proposed standard does not independently authorize exceptions to existing mandatory controls.
+A workflow reporting success should not be treated as proof of live availability unless the workflow or a separate verification establishes that result.
 
-14. Governance Status
+Record material deployment failures and corrective actions.
 
-This document is proposed and pending formal ratification. Publishing it in the repository does not constitute ratification.
+13. Rollback and Recovery
 
-Until formally adopted, it serves as proposed release-management guidance. Applicable existing repository protections and approved policies remain in force.
+Projects should document how to respond when a release causes unacceptable defects, security issues, or operational disruption.
 
-15. Related Documentation
+Recovery guidance should identify, where applicable:
 
-- "Network Documentation Index" (../docs/README.md)
-- "Network Overview" (../docs/NETWORK-OVERVIEW.md)
-- "Project Lifecycle" (../docs/PROJECT-LIFECYCLE.md)
-- "Security Standard" (../standards/SECURITY-STANDARD.md)
-- "Project Registry" (../projects/README.md)
-- "Integration Governance" (../integrations/README.md)
+- Conditions that trigger rollback.
+- The responsible decision-maker.
+- The previous known-good revision or artifact.
+- Required configuration or database recovery steps.
+- Potential data-loss implications.
+- Verification after recovery.
+- Communication and incident-record requirements.
+
+Rollback must not be assumed to reverse irreversible data changes. Database migrations and external side effects may require a separate recovery strategy.
+
+14. Release Failure and Cancellation
+
+When a release is blocked or cancelled, record the reason and any unresolved issues that materially affect readiness.
+
+Do not describe an unsuccessful release attempt as a completed production release.
+
+If a published release is withdrawn or superseded, update the release information and provide appropriate user guidance. Preserve historical traceability.
+
+15. Maintenance and End of Support
+
+Release documentation should identify relevant maintenance and support expectations where applicable.
+
+When a version becomes deprecated or unsupported, document:
+
+- The affected versions.
+- The effective date or transition period, where known.
+- Security and compatibility implications.
+- Recommended upgrade or replacement.
+- Migration guidance.
+- Any continuing operational obligations.
+
+Projects should not imply that retired versions continue to receive security updates unless that support is actually provided.
+
+16. Exceptions and Risk Acceptance
+
+Exceptions to adopted release requirements must be documented and approved by the authority designated under the applicable governance process.
+
+The record should state the requirement, justification, risk assessment, compensating controls, approver, decision date, and review or expiration date.
+
+An exception must not be used to misrepresent validation results or conceal material release risks.
+
+17. Review and Maintenance
+
+Release records should remain accessible and accurate for the period required by applicable operational, legal, and audit obligations.
+
+The standard should be reviewed when release architecture, security requirements, governance, or deployment practices change materially.
+
+18. Governance Status
+
+Ratification status: Proposed — pending formal approval.
+
+This document defines proposed release-management requirements. Publishing, editing, merging, or deploying it does not constitute formal ratification. Binding requirements must follow the applicable governance approval process.
 
 ---
 
-X-Evil Network — Release Documentation Standard
-Traceable source. Verifiable evidence. Controlled publication.
+X-Evil Network — Traceable releases, verifiable validation, and accountable publication.
