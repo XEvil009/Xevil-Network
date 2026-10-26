@@ -6,11 +6,11 @@
   "manifest_status": "INITIAL_BASELINE",
   "purpose": "Document the repository structure and distinguish existing paths from planned architecture.",
   "baseline": {
-    "reference_branch": "main",
-    "verification_method": "GitHub repository contents",
-    "verified_at": "2026-10-26",
-    "note": "The verified_at date records the original baseline inspection. The existing_paths list reflects the repository state represented by this manifest revision. Update this manifest through a pull request whenever repository structure changes."  },
-  
+  "reference_branch": "main",
+  "verification_method": "GitHub repository contents",
+  "verified_at": "2026-10-26",
+  "note": "The verified_at date records the original baseline inspection. The existing_paths list reflects the repository state represented by this manifest revision. Update this manifest through a pull request whenever repository structure changes."
+ },
   "existing_paths": [
     ".gitignore",
     ".editorconfig",
