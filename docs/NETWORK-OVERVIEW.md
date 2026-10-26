@@ -1,150 +1,169 @@
 X-Evil Network — Network Overview
 
-Document type: Network architecture and operating overview
-Status: Proposed operating documentation
-Version: 1.0.0
-Ratification status: Pending formal approval where required
-Repository: "XEvil009/Xevil-Network" (https://github.com/XEvil009/Xevil-Network)
-Public website: "X-Evil Network" (https://xevil009.github.io/Xevil-Network/)
+Document status: Proposed — pending formal ratification
+Network: X-Evil Network
+Network authority: XEVIL009
+Document type: Architecture and operating principles
 
 1. Purpose
 
-X-Evil Network is a governed network of projects, standards, documentation, and integrations designed to support coordinated development and long-term maintainability.
+X-Evil Network is intended to provide a structured framework for organizing, developing, securing, documenting, and maintaining independent projects under a shared network architecture.
 
-The network establishes shared expectations for governance, engineering quality, security, documentation, project registration, and release management while allowing individual projects to operate within their approved scope.
-
-This document describes the intended operating model. It does not independently grant permissions, ratify policies, or override applicable repository controls.
+The network aims to establish consistent standards for governance, security, project lifecycle management, integrations, releases, and public documentation.
 
 2. Mission and Objectives
 
-The network aims to:
+The proposed objectives are to:
 
-- Establish consistent governance and project accountability.
-- Promote secure, maintainable, and documented engineering practices.
-- Make eligible project source code publicly accessible under an approved license.
-- Provide a traceable process for project onboarding and lifecycle management.
-- Maintain controlled, reviewable changes through version control and pull requests.
-- Document dependencies and integrations between network projects.
-- Preserve release history and communicate significant changes transparently.
+- Establish clear governance and accountability.
+- Maintain a documented and scalable repository structure.
+- Require security-conscious development and release practices.
+- Support independent projects under shared network standards.
+- Maintain transparent project status and release records.
+- Encourage maintainable, accessible, and publicly documented resources.
+- Define consistent processes for review, approval, maintenance, and retirement.
 
 3. Scope
 
-The network's documented operating scope includes:
+The network framework is intended to cover:
 
-- Governance: charters, policy proposals, decisions, and approval records.
-- Projects: project registration, ownership, status, and lifecycle.
-- Standards: engineering, security, documentation, and release requirements.
-- Integrations: documented interfaces, dependencies, permissions, and trust boundaries.
-- Releases: version identifiers, change summaries, validation results, and release records.
-- Infrastructure: source control, automated validation, deployment workflows, and public documentation.
+- Network governance and policy documentation.
+- Project registration and lifecycle management.
+- Repository organization and technical standards.
+- Application, infrastructure, and workflow security.
+- Third-party integrations and trust boundaries.
+- Build validation, release management, and deployment.
+- Documentation maintenance and public project information.
 
-Specific obligations apply only where approved policies, project agreements, or applicable controls establish them.
+A project may require additional controls based on its technical design, risk profile, legal obligations, and operating environment.
 
 4. Governance and Authority
 
-Network governance is intended to operate through documented responsibilities, traceable decisions, and defined approval boundaries.
+Network governance is intended to define decision-making authority, project responsibilities, policy ownership, and escalation procedures.
 
-The network's stated governance model recognizes XEVIL009 as the network-level authority for documented network-wide overrides concerning the charter, security, and cross-project conflicts.
+Under the proposed governance model:
 
-Such authority must be exercised within applicable law, platform requirements, and documented security controls. This overview does not define an unrestricted technical bypass or replace repository access controls.
+- XEVIL009 retains documented network-level override authority for charter matters, security concerns, and cross-project conflicts.
+- Project owners retain final release authority within applicable, approved network policies.
+- Project-specific decisions should remain with the relevant project owner unless they conflict with adopted network requirements.
+- Material decisions should be documented with their rationale, scope, and approval status.
 
-Project owners retain final release authority for their respective projects within approved network policies and their granted permissions.
-
-Governance documents must clearly distinguish between:
-
-- Proposed policies awaiting ratification.
-- Ratified policies currently in force.
-- Superseded or retired policies retained for historical reference.
-
-Merging a document into a repository does not, by itself, mean that the document has been formally ratified.
+These provisions remain proposed until formally ratified. This document does not itself establish or ratify governance policy.
 
 5. Repository Architecture
 
-The network repository uses the following organizational boundaries:
+The repository is organized around distinct documentation and operational responsibilities.
 
-Directory| Responsibility
-"00-governance/"| Governance charter, policies, and decision records
-"docs/"| Network overview, procedures, and documentation index
-"projects/"| Project registry and project lifecycle records
-"standards/"| Shared engineering, security, and release standards
-"integrations/"| Integration specifications and dependency records
-"releases/"| Release records and change history
-".github/workflows/"| Automated validation, security analysis, and deployment workflows
+Directory or file| Intended responsibility
+"00-governance/"| Governance charters, policies, decisions, and oversight records.
+"docs/"| Network overview, lifecycle guidance, and general documentation.
+"standards/"| Shared technical, security, and operational standards.
+"projects/"| Project registry and project-related records.
+"integrations/"| Integration documentation and trust-boundary requirements.
+"releases/"| Release documentation and supporting records.
+"STRUCTURE-MANIFEST.json"| Machine-readable record of the intended repository structure.
+"README.md"| Public repository entry point.
 
-The actual repository state is authoritative for which paths currently exist. Consult "STRUCTURE-MANIFEST.json" for the recorded structure and its documented verification context.
+The repository manifest and actual directory contents should remain consistent. Changes to the architecture should be reviewed and reflected in the relevant documentation.
 
-6. Project Independence and Shared Requirements
+6. Project Independence
 
-Individual projects may have their own repositories, technologies, maintainers, and release schedules.
+Each project should have a defined owner, purpose, scope, lifecycle status, documentation set, and release process.
 
-Projects participating in the network should document:
+Projects should:
 
-- Purpose, scope, ownership, and support status.
-- Source repository and approved licensing information, where applicable.
-- Dependencies, integration points, and trust boundaries.
-- Security and privacy considerations.
-- Build, test, deployment, and release procedures.
-- Known limitations and maintenance expectations.
+- Follow applicable adopted network standards.
+- Document project-specific security and operational requirements.
+- Maintain accurate source, dependency, and release information.
+- Identify external services and integrations.
+- Record material changes and known limitations.
+- Remain independently maintainable where practical.
 
-A project's inclusion in the network must not be interpreted as proof that it has passed every security, compliance, or quality assessment.
+Project registration alone does not constitute authorization to develop, deploy, or release a project.
 
 7. Security Model
 
-Security is a continuous engineering responsibility rather than a one-time setup task.
+Security is a continuous responsibility across development, review, deployment, and maintenance.
 
-Network repositories should apply risk-appropriate controls, including:
+The intended baseline includes:
 
-- Least-privilege permissions.
-- Protected branches and reviewed changes.
-- Automated build validation and security analysis.
-- Secure handling of credentials and secrets.
-- Dependency monitoring and security updates.
-- Documented incident reporting and remediation procedures.
-- Controlled deployment permissions and auditable releases.
+- Least-privilege repository and workflow permissions.
+- Protected branches and pull-request-based changes.
+- Secret prevention and secure credential handling.
+- Dependency monitoring and vulnerability remediation.
+- Automated build, validation, and security checks.
+- Review of third-party actions, packages, and integrations.
+- Documented incident handling and recovery procedures.
 
-Implementation details and mandatory requirements are defined by the applicable security standard and repository configuration. This overview is not a security certification.
+Projects handling sensitive data, critical services, or elevated privileges may require additional controls.
 
-8. Change and Release Management
+Security requirements should be defined in the applicable security standard and project-specific documentation.
 
-Changes should be developed on purpose-specific branches and submitted through pull requests.
+8. Change Management
 
-Before merging, contributors should verify that:
+Material changes should be made through reviewable, traceable changesets.
 
-1. The change is within scope and adequately documented.
-2. Required automated checks pass.
-3. Relevant security and compatibility implications have been considered.
-4. Required conversations are resolved.
-5. The change does not introduce secrets or unauthorized disclosures.
-6. Related manifests, indexes, and records are updated.
+The intended process is:
 
-Releases should have identifiable versions or release identifiers, a change summary, and appropriate validation evidence. The project owner retains final release authority within approved policy boundaries.
+1. Create a dedicated branch for the change.
+2. Make focused changes with clear commit messages.
+3. Validate affected documentation, code, workflows, and manifests.
+4. Open a pull request with a descriptive title and change summary.
+5. Resolve review comments and required validation failures.
+6. Merge only when the applicable repository and governance requirements are satisfied.
 
-9. Public Transparency and Information Protection
+Changes to "main" should follow the repository's configured branch protection rules.
 
-Public documentation should support meaningful review without exposing confidential or sensitive operational information.
+9. Release Management
 
-Never commit passwords, access tokens, private keys, recovery codes, or other secrets. Report suspected exposures through an appropriate private reporting channel and rotate affected credentials promptly.
+Releases should be traceable to reviewed source code and reproducible validation evidence where technically feasible.
 
-Public source availability does not remove obligations concerning personal data, third-party rights, software licensing, or security.
+A release record should identify:
 
-10. Document Maintenance
+- Version and release date.
+- Source revision or tag.
+- Summary of changes.
+- Validation and security results.
+- Known issues and limitations.
+- Relevant compatibility or migration notes.
+- Rollback or recovery guidance where applicable.
+- Required release approvals.
 
-Documentation owners should review affected documents when governance, architecture, workflows, security requirements, or project relationships change.
+A successful build alone does not establish that a release has received all required approvals.
 
-Changes must remain traceable through version control. Historical records should be retained where appropriate, with superseded material clearly identified.
+10. Transparency and Public Access
 
-11. Limitations
+Eligible public projects are intended to provide publicly accessible source code under an approved license, subject to applicable security, privacy, and legal constraints.
 
-This document is an operating overview, not a substitute for:
+Public documentation should accurately describe a project's purpose, status, license, limitations, and release history.
 
-- The formally ratified governance charter and policies.
-- Project-specific documentation.
-- The applicable security standard.
-- Legal, licensing, privacy, or regulatory review.
-- Actual repository permissions and enforced platform controls.
+No credentials, private records, confidential operational details, or other sensitive information should be published in public repositories.
 
-Where this overview conflicts with a ratified policy, the applicable authoritative policy takes precedence.
+11. Maintenance and Review
+
+Network documentation and standards should be reviewed when significant changes affect:
+
+- Governance or authority.
+- Repository architecture.
+- Security controls.
+- Project lifecycle procedures.
+- Integration behavior or trust boundaries.
+- Release and deployment processes.
+
+Obsolete documentation should be corrected, superseded, or clearly marked as deprecated rather than silently left to mislead readers.
+
+12. Limitations
+
+This overview describes the intended network architecture and proposed operating principles. It does not guarantee that every control is implemented in every project.
+
+Implementation status, compliance evidence, and governance approval should be recorded separately and verified against the relevant repository, workflow, or decision record.
+
+13. Governance Status
+
+Ratification status: Proposed — pending formal approval.
+
+Publication, editing, merging, or deployment of this document does not constitute formal ratification. Any binding policy must follow the applicable governance approval process and retain a documented approval record.
 
 ---
 
-X-Evil Network — documented governance, controlled engineering, and traceable change.
+X-Evil Network — Structured governance, maintainable architecture, and security-conscious project development.
