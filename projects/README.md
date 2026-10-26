@@ -1,141 +1,145 @@
 X-Evil Network — Project Registry
 
-Document Type: Project Registry Standard
-Version: 1.0.0
-Status: Proposed — Pending Formal Ratification
-Maintained By: X-Evil Network maintainers
-Network Authority: XEVIL009
+Document status: Proposed — pending formal ratification
+Document owner: X-Evil Network
+Purpose: Project registration, ownership, and lifecycle tracking
 
 1. Purpose
 
-The Project Registry provides a consistent record of projects belonging to or formally associated with X-Evil Network.
+The project registry provides a consistent way to document projects associated with X-Evil Network.
 
-It supports project discovery, ownership transparency, lifecycle tracking, security accountability, dependency management, and release coordination.
+It is intended to improve visibility into project ownership, purpose, lifecycle status, source availability, licensing, security responsibilities, and release history.
 
-A registry entry is a record, not proof of approval, operational readiness, or security certification.
+Registry inclusion does not constitute project approval, security certification, or authorization for production deployment.
 
 2. Registry Requirements
 
-Every registered project should have a unique project identifier and, where applicable, the following information:
+Each registered project should have a dedicated record containing the following information where applicable.
 
-- Project ID: Stable, unique identifier.
-- Project Name: Official project name.
-- Description: Purpose, scope, and intended users.
-- Owner: Accountable project owner or team.
-- Maintainers: Authorized individuals or teams responsible for maintenance.
-- Source Repository: Canonical source-code repository URL.
-- License: Applicable open-source license or clearly stated licensing status.
-- Lifecycle Status: Current status as defined in this document.
-- Documentation: Primary documentation location.
-- Security Reporting: Available vulnerability-reporting channel.
-- Dependencies: Material internal and external dependencies.
-- Integrations: Known connections to other projects or services.
-- Data Classification: Categories of data processed, if applicable.
-- Release Information: Latest verified release or an explicit statement that no release exists.
-- Support Policy: Maintenance expectations and support limitations.
-- Decision Record: Link to the relevant approval or status-change record, when applicable.
+Field| Requirement
+Project name| The official project name.
+Project identifier| A stable, unique identifier where the registry requires one.
+Summary| A concise description of the project's purpose.
+Owner| The responsible person, team, or organization.
+Repository| The canonical source repository or project location.
+License| The applicable license or an explicit statement that licensing is unresolved.
+Lifecycle status| The current status using the defined lifecycle vocabulary.
+Documentation| Links to technical, operational, and user documentation.
+Security contact| A monitored reporting route or applicable security-reporting instructions.
+Dependencies| Important external services, packages, and integrations.
+Release information| The latest relevant release or revision, where available.
+Maintenance status| Whether the project is actively maintained, deprecated, or retired.
 
-Unknown or inapplicable fields must be identified honestly. Do not invent values or publish secrets, credentials, private contact details, or sensitive infrastructure information.
+Do not publish personal contact information, credentials, private operational details, or other sensitive information in registry records.
 
 3. Lifecycle Statuses
 
-Use the following status vocabulary consistently:
+The following statuses align with the proposed "Project Lifecycle Standard" (../docs/PROJECT-LIFECYCLE.md).
 
-Status| Meaning
-"proposed"| Submitted for consideration; not approved.
-"under-review"| Under evaluation for suitability, risk, and requirements.
-"approved-for-development"| Authorized to enter development under the applicable approval process.
-"in-development"| Implementation is underway.
-"release-candidate"| A candidate release is undergoing final validation.
-"active"| Released and maintained for its stated purpose.
-"maintenance"| Primarily receiving maintenance, fixes, or security updates.
-"deprecated"| Marked for eventual replacement or discontinuation.
-"retired"| No longer maintained or supported by the network.
+Status| Definition
+"Proposed"| The project has been recorded but has not received development authorization.
+"Under Review"| The proposal or a material change is undergoing assessment.
+"Approved for Development"| The applicable authority has authorized development within a documented scope.
+"In Development"| Implementation and development validation are underway.
+"Release Candidate"| A candidate release is undergoing final validation.
+"Active"| The project is released and actively maintained.
+"Maintenance"| Work is primarily focused on fixes, security updates, and compatibility.
+"Deprecated"| The project is being phased out or replaced.
+"Retired"| The project is no longer actively maintained or offered as an active project.
 
-A status change must be supported by a verifiable record. Do not label a project "active", "approved-for-development", or "release-candidate" without evidence appropriate to that status.
+Use status labels consistently. A status must not imply a level of approval or assurance that has not been documented.
 
-4. Project Admission
+4. Registration Process
 
-A project proposed for network registration should include:
+The proposed registration process is:
 
-1. A clear purpose and defined scope.
-2. An accountable owner and maintenance plan.
-3. A canonical source repository, where applicable.
-4. Appropriate licensing information for public source code.
-5. Documentation and a proposed lifecycle status.
-6. A preliminary security and privacy assessment proportionate to its risks.
-7. Identified dependencies and external integrations.
-8. A review or decision record appropriate to its current stage.
+1. Prepare a project proposal and initial metadata.
+2. Create or update the relevant registry record.
+3. Set the initial status to "Proposed".
+4. Complete the required technical, security, licensing, and governance reviews.
+5. Record the resulting decision and any conditions.
+6. Update the lifecycle status only when the required evidence exists.
+7. Keep repository and documentation links accurate over time.
 
-Registration and approval are separate actions. Projects must not claim network endorsement solely because their repository appears in this registry.
+Registration and approval must remain distinct decisions.
 
-5. Ownership and Accountability
+5. Public Source and Licensing
 
-Each project must have a clearly identified accountable owner. Maintainer access should follow least-privilege principles and be reviewed when responsibilities change.
+Eligible public projects are expected to provide publicly accessible source code under an approved license, subject to applicable legal, security, and privacy constraints.
 
-Project owners remain responsible for project-level maintenance and releases within the applicable network policies.
+Each record should identify the license clearly and link to the canonical license file where one exists.
 
-Network-level governance, security, and cross-project conflicts remain subject to the authority and procedures established by the formally approved network governance documents.
+A project should not be described as open source solely because its repository is publicly visible. Its licensing terms must permit the relevant rights under the applicable license.
 
-6. Public Source and Licensing
+Projects with unresolved licensing must identify that limitation rather than imply that unrestricted reuse is permitted.
 
-Projects designated for public release should provide publicly accessible source code under an approved license, subject to applicable legal and governance requirements.
+6. Ownership and Accountability
 
-The registry must distinguish between:
+Every registered project should have a clearly documented owner responsible for:
 
-- A public source repository with a declared license.
-- A public repository whose licensing status is unresolved.
-- A private or restricted repository, if permitted by applicable policy.
+- Maintaining project metadata.
+- Keeping source and documentation links current.
+- Following applicable network standards.
+- Tracking security findings and material risks.
+- Maintaining dependency and integration records.
+- Publishing accurate release information.
+- Reviewing lifecycle status periodically.
+- Coordinating deprecation or retirement when necessary.
 
-Public visibility alone does not establish that code is open source or legally reusable.
+Where ownership changes, the registry and relevant project documentation should be updated through a reviewable change.
 
-7. Security and Privacy
+7. Security and Compliance Metadata
 
-Registry entries must not expose credentials, access tokens, private keys, confidential operational details, or personal information that is not necessary for the registry.
+Registry records should link to relevant security and operational documentation where available.
 
-Projects must document relevant security-reporting routes, material dependencies, and significant data-processing responsibilities.
+Depending on the project, this may include:
 
-Security incidents, vulnerabilities, and remediation records should be handled through authorized channels. Public registry updates must not disclose exploitable details prematurely.
+- Security reporting instructions.
+- Dependency and vulnerability management information.
+- Data-flow and privacy documentation.
+- Integration and trust-boundary records.
+- Build and deployment validation.
+- Release and recovery procedures.
+- Known limitations and outstanding risk records.
 
-8. Maintenance and Status Changes
+The presence of documentation does not establish that its controls are implemented or effective. Claims of compliance should be supported by verifiable evidence.
 
-Project owners or authorized maintainers should keep registry entries accurate when:
+8. Change Management
 
-- Ownership or maintainership changes.
-- Source repositories move or become unavailable.
-- Licensing changes.
-- Dependencies or integrations materially change.
-- A release is published.
-- Support status changes.
-- A project is deprecated or retired.
-- Significant security or compliance information changes.
+Registry changes should be made through the repository's approved change process.
 
-Changes to project status should include a date and a reference to the supporting decision or release record, where applicable.
+Changes to ownership, lifecycle status, license, repository location, security posture, or production availability should include an explanation and relevant supporting evidence.
 
-9. Registry Integrity
+Use pull requests for changes to protected branches. Required checks and reviews must pass before merging.
 
-Registry information must be traceable to a source repository, project documentation, release record, or authorized decision.
+9. Deprecation and Retirement
 
-Do not publish fabricated projects, unsupported approval claims, unverified release versions, or misleading security certifications.
+A deprecated project record should identify the reason for deprecation, expected timeline where known, user impact, and available migration guidance.
 
-Where a fact cannot be verified, mark it as unknown or pending verification.
+A retired project record should document its final status and relevant archival, service shutdown, data handling, and credential-revocation actions where applicable.
 
-10. Governance Status
+Historical records should be preserved when needed for security, legal, operational, or audit purposes.
 
-This document is proposed and pending formal ratification. Its publication or inclusion in the repository does not itself constitute ratification.
+10. Registry Maintenance
 
-Until the applicable governance process is completed, this document serves as a proposed registry standard and must not be represented as a formally adopted policy.
+Registry maintainers should periodically check that:
 
-11. Related Documentation
+- Project entries identify an accountable owner.
+- Lifecycle statuses reflect documented decisions.
+- Repository and documentation links work.
+- Licensing information is accurate.
+- Material dependencies and integrations are recorded.
+- Deprecated and retired projects are clearly identified.
+- Public records do not expose sensitive information.
 
-- "Network Documentation Index" (../docs/README.md)
-- "Network Overview" (../docs/NETWORK-OVERVIEW.md)
-- "Project Lifecycle" (../docs/PROJECT-LIFECYCLE.md)
-- "Security Standard" (../standards/SECURITY-STANDARD.md)
-- "Integration Documentation" (../integrations/README.md)
-- "Release Documentation" (../releases/README.md)
+Corrections should be made through the approved review process.
+
+11. Governance Status
+
+Ratification status: Proposed — pending formal approval.
+
+This registry standard describes a proposed process. Publishing, editing, merging, or deploying it does not constitute formal ratification. Binding requirements must follow the applicable governance approval process.
 
 ---
 
-X-Evil Network — Project Registry
-Documented, traceable, maintainable, and security-conscious project governance.
+X-Evil Network — Clear project ownership, traceable status, and accountable maintenance.
