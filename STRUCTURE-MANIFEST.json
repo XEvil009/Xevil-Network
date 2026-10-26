@@ -1,80 +1,87 @@
-
 {
-  "manifest_version": "1.0.0",
-  "network": "X-Evil Network",
-  "repository": "XEvil009/Xevil-Network",
-  "manifest_status": "INITIAL_BASELINE",
-  "purpose": "Document the repository structure and distinguish existing paths from planned architecture.",
-  "baseline": {
-  "reference_branch": "main",
-  "verification_method": "GitHub repository contents",
-  "verified_at": "2026-10-26",
-  "note": "The verified_at date records the original baseline inspection. The existing_paths list reflects the repository state represented by this manifest revision. Update this manifest through a pull request whenever repository structure changes."
- },
-  "existing_paths": [
-    ".gitignore",
-    ".editorconfig",
-    "README.md",
-    "LICENSE",
-    "SECURITY.md",
-    "index.html",
-    ".github/workflows/codeql.yml",
-    ".github/workflows/deploy.yml",
-    ".github/workflows/jekyll-gh-pages.yml",
-    ".github/workflows/jekyll-pr-validation.yml",
-    "00-governance/charter/GOVERNANCE-CHARTER-v1.0.md",
-    "00-governance/policies/CONTRIBUTION-POLICY.md",
-    "00-governance/policies/RELEASE-POLICY.md",
-    "00-governance/policies/SECURITY-POLICY.md",
-    "00-governance/records/POLICY-REGISTER.md"
-  ],
-  "existing_directories": [
-    ".github/workflows/",
-    "00-governance/",
-    "00-governance/charter/",
-    "00-governance/policies/",
-    "00-governance/records/"
-  ],
-  "planned_paths": [
-    "docs/",
-    "projects/",
-    "standards/",
-    "integrations/",
-    "releases/"
-  ],
-  "validation": {
-    "required_files": [
-      "README.md",
-      "LICENSE",
-      "SECURITY.md",
-      "index.html",
-      "STRUCTURE-MANIFEST.json",
-      ".github/workflows/codeql.yml",
-      ".github/workflows/deploy.yml",
-      ".github/workflows/jekyll-gh-pages.yml",
-      ".github/workflows/jekyll-pr-validation.yml",
-      "00-governance/charter/GOVERNANCE-CHARTER-v1.0.md",
-      "00-governance/policies/CONTRIBUTION-POLICY.md",
-      "00-governance/policies/RELEASE-POLICY.md",
-      "00-governance/policies/SECURITY-POLICY.md",
-      "00-governance/records/POLICY-REGISTER.md"
-    ],
-    "rules": [
-      "Every required file must exist and must not be empty.",
-      "Every path listed as existing must be verified against the repository.",
-      "Planned paths must not be treated as required until formally adopted.",
-      "Manifest changes must be reviewed through a pull request.",
-      "Governance documents marked proposed must not be represented as ratified."
-    ]
-  },
-  "governance": {
-    "charter_status": "PROPOSED_NOT_RATIFIED",
-    "policy_status": "PROPOSED_NOT_RATIFIED",
-    "change_control": "Pull request review and applicable main-branch protection rules"
-  },
-  "maintenance": {
-    "owner": "Network maintainers",
-    "review_trigger": "Any structural repository change",
-    "update_policy": "Update this manifest in the same pull request that changes the repository structure."
-  }
+"manifest_version": "1.0.0",
+"network": "X-Evil Network",
+"repository": "XEvil009/Xevil-Network",
+"manifest_status": "DOCUMENTATION_FOUNDATION",
+"purpose": "Document the repository structure and distinguish existing paths from planned architecture.",
+"baseline": {
+"reference_branch": "main",
+"verification_method": "GitHub repository contents",
+"verified_at": "2026-10-26",
+"note": "The verified_at date records the original baseline inspection. The existing_paths and existing_directories lists describe the repository structure represented by this manifest revision. Verify every listed path on the feature branch before merging. Update this manifest through a pull request whenever repository structure changes."
+},
+"existing_paths": [
+".gitignore",
+".editorconfig",
+"README.md",
+"LICENSE",
+"SECURITY.md",
+"index.html",
+"STRUCTURE-MANIFEST.json",
+".github/workflows/codeql.yml",
+".github/workflows/deploy.yml",
+".github/workflows/jekyll-gh-pages.yml",
+".github/workflows/jekyll-pr-validation.yml",
+"00-governance/charter/GOVERNANCE-CHARTER-v1.0.md",
+"00-governance/policies/CONTRIBUTION-POLICY.md",
+"00-governance/policies/RELEASE-POLICY.md",
+"00-governance/policies/SECURITY-POLICY.md",
+"00-governance/records/POLICY-REGISTER.md",
+"docs/README.md",
+"docs/NETWORK-OVERVIEW.md",
+"docs/PROJECT-LIFECYCLE.md",
+"standards/SECURITY-STANDARD.md",
+"projects/README.md",
+"integrations/README.md",
+"releases/README.md"
+],
+"existing_directories": [
+".github/workflows/",
+"00-governance/",
+"00-governance/charter/",
+"00-governance/policies/",
+"00-governance/records/",
+"docs/",
+"standards/",
+"projects/",
+"integrations/",
+"releases/"
+],
+"planned_paths": [],
+"validation": {
+"required_files": [
+"README.md",
+"LICENSE",
+"SECURITY.md",
+"index.html",
+"STRUCTURE-MANIFEST.json",
+".github/workflows/codeql.yml",
+".github/workflows/deploy.yml",
+".github/workflows/jekyll-gh-pages.yml",
+".github/workflows/jekyll-pr-validation.yml",
+"00-governance/charter/GOVERNANCE-CHARTER-v1.0.md",
+"00-governance/policies/CONTRIBUTION-POLICY.md",
+"00-governance/policies/RELEASE-POLICY.md",
+"00-governance/policies/SECURITY-POLICY.md",
+"00-governance/records/POLICY-REGISTER.md"
+],
+"rules": [
+"Every required file must exist and must not be empty.",
+"Every path listed as existing must be verified against the repository.",
+"Planned paths must not be treated as required until formally adopted.",
+"Manifest changes must be reviewed through a pull request.",
+"Governance documents marked proposed must not be represented as ratified.",
+"Documentation paths listed as existing must be present on the branch before merge."
+]
+},
+"governance": {
+"charter_status": "PROPOSED_NOT_RATIFIED",
+"policy_status": "PROPOSED_NOT_RATIFIED",
+"change_control": "Pull request review and applicable main-branch protection rules"
+},
+"maintenance": {
+"owner": "Network maintainers",
+"review_trigger": "Any structural repository change",
+"update_policy": "Update this manifest in the same pull request that changes the repository structure."
+}
 }
